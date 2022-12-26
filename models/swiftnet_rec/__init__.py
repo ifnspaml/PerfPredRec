@@ -1,0 +1,1 @@
+from models.swiftnet_rec.fw_adaptor import SwiftNetRec, load_state_dict_into_model
