@@ -64,6 +64,7 @@ class Evaluator:
 
         '''     Load Label and key definitons   '''
         keys_to_load = ['color', 'segmentation_trainid']
+        folders_to_load = None
         if self.opt.dataset == 'cityscapes':
             self.trainvaltest_split = "validation"
             print("As cityscapes is used note that 'trainvaltest_split' is set to 'validation' ")
@@ -74,8 +75,6 @@ class Evaluator:
             elif self.opt.subset == 'test':
                 folders_to_load = ['leftimg8bit/val/frankfurt', 'frankfurt',
                                    'leftimg8bit/val/munster', 'munster']
-            else:
-                folders_to_load = None
         elif self.opt.dataset == 'kitti_2015':
             self.trainvaltest_split = "train"
             print("As kitti_2015 is used note that 'trainvaltest_split' is set to 'train'")
