@@ -50,6 +50,8 @@ SwiftNet semantic segmentation baseline:
 |-------|---------------|
 | 65.02 | [model](https://drive.google.com/drive/folders/1m433jSb2A5AVXrEBE7UUMp79mkExhHn1?usp=share_link)     |
 
+The following two tables include numbers for the Pearson correlation as reported in the paper.
+
 SwiftNet-based reconstruction decoder models:
 
 | Reconstruction Decoder | Lat. | SPP | Clean | FGSM | PGD  | Gaussian | S&P   | all | Download link                                                                                     |
