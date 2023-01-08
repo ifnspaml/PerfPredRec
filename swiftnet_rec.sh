@@ -1,18 +1,17 @@
 #!/bin/bash -l
 
-#SBATCH --job-name=trn_SN
+#SBATCH --job-name=trn_SNR
 #SBATCH --partition=gpu         # gpu or debug
 #SBATCH --time=100:20:00        # 100:20:00 (gpu) or 00:20:00 (debug)
 #SBATCH --begin=now
-#SBATCH --gres=gpu:1
+#SBATCH --gres=gpu:1080:1
 #SBATCH --mem=20000M		    # was 50000/20000/15000
 #SBATCH --cpus-per-task=4       # 2 or 4
-#SBATCH --exclude=gpu06
 
 export IFN_DIR_DATASET=/beegfs/data/shared
 export IFN_DIR_CHECKPOINT="${PWD}/../../experiments/"
 
-conda activate swiftnet-pp_cr2
+conda activate swiftnet-pp
 
 python train_swiftnet_rec.py \
 --model_name SwiftNetRec \
@@ -23,4 +22,4 @@ python train_swiftnet_rec.py \
 --num_epochs 10 \
 --rec_decoder swiftnet \
 --lateral 1 \
---load_model_state_name ../SwiftNet_ss_common/swiftnet_baseline_cvpr2022/
+--load_model_state_name ../SwiftNet/swiftnet_baseline/
