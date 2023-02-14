@@ -9,14 +9,23 @@ from .semseg import SemsegModel
 # --------------------------------------------------------------------------------
 def load_state_dict_into_model(model, pretrained_dict):
     model_dict = model.state_dict()
+    # For compatibility with models uploaded to Google Drive
+    pretrained_dict = {k.replace('spp_ae', 'spp_rec'): v for k, v in pretrained_dict.items()}
+    pretrained_dict = {k.replace('ae_decoder', 'rec_decoder'): v for k, v in pretrained_dict.items()}
     if list(pretrained_dict.keys())[0] == 'backbone.conv1.weight':
         pretrained_dict = {k.replace('backbone', 'loaded_model.backbone'): v for k, v in pretrained_dict.items()}
         pretrained_dict = {k.replace('logits', 'loaded_model.logits'): v for k, v in pretrained_dict.items()}
     for name, param in pretrained_dict.items():
         if name not in model_dict:
-            print("State_dict mismatch!", flush=True)
+            if "onexone_conv" in name:
+                pass # Old legacy code created some modules which were not used by default. They are ignored here.
+            else:
+                print(f"State_dict mismatch! Entry {name} not found.", flush=True)
             continue
-        model_dict[name].copy_(param)
+        try:
+            model_dict[name].copy_(param)
+        except:
+            print(f"Tensor size mismatch for weight tensor {name}! Model dict: {model_dict[name].size()}, Pretrained dict: {param.size()}.", flush=True)
     model.load_state_dict(pretrained_dict, strict=False)
 
 

@@ -32,8 +32,8 @@ Model = namedtuple( 'Model' , [
 models = [
     #       name                        id   ModuleName                                         instanceClass       modelState(not considered right now)
     Model(  'sample',                   0,  'ModuleName',                                       'ClassName',        'none'),
-    Model(  'SwiftNet',                 1,  'swiftnet-pp.models.swiftnet.fw_adaptor',           'SwiftNet',         'none'),
-    Model(  'SwiftNetRec',              2,  'swiftnet-pp.models.swiftnet_rec.fw_adaptor',       'SwiftNetRec',      'none'),
+    Model(  'SwiftNet',                 1,  'models.swiftnet.fw_adaptor',           'SwiftNet',         'none'),
+    Model(  'SwiftNetRec',              2,  'models.swiftnet_rec.fw_adaptor',       'SwiftNetRec',      'none'),
 ]
 
 #--------------------------------------------------------------------------------

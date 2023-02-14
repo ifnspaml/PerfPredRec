@@ -71,6 +71,9 @@ ResNet-based reconstruction decoder models:
 
 
 ## Prerequisites and Requirements
+First, clone this repository.
+
+#### Environment
 To install the environment from scratch, follow the following steps:
 ```
 conda create --name swiftnet-pp python=3.7.12
@@ -92,6 +95,11 @@ pip install "git+https://github.com/ifnspaml/TUBSRobustCheck.git"
 ```
 
 For reference: The `environment.yml` was created by exporting the environment via `conda env export > environment.yml` on our Linux cluster.
+
+#### Data Preparation
+We use a similar dataloader as in [AdvAttackDet](https://github.com/ifnspaml/AdvAttackDet) which builds on [IFN_Dataloader](https://github.com/ifnspaml/IFN_Dataloader).
+Please refer to [AdvAttackDet](https://github.com/ifnspaml/AdvAttackDet) Prerequisites and Requirements section to prepare the datasets ``cityscapes`` and ``kitti_2015``.
+Both are used in our experiments.
 
 ## Training
 For training according to our method, please first use `train_swiftnet.py` (training SwiftNet for semantic segmentation) and then `train_swiftnet_rec.py` (loading a trained SwiftNet for semantic segmentation (frozen weights) and train an additional reconstruction decoder).
