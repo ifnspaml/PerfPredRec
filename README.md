@@ -101,6 +101,8 @@ We use a similar dataloader as in [AdvAttackDet](https://github.com/ifnspaml/Adv
 Please refer to [AdvAttackDet](https://github.com/ifnspaml/AdvAttackDet) Prerequisites and Requirements section to prepare the datasets ``cityscapes`` and ``kitti_2015``.
 Both are used in our experiments.
 
+Further, if you don't want to pre-generate train ID segmentation labels (i.e., mapping the segmentation label IDs to a form suitable for training) or struggle with the process described [here](https://github.com/ifnspaml/IFN_Dataloader/tree/master/dataloader/file_io), you can set keys_to_load=('color', 'segmentation') and labels_mode='fromid' in the respective scripts.
+
 ## Training
 For training according to our method, please first use `train_swiftnet.py` (training SwiftNet for semantic segmentation) and then `train_swiftnet_rec.py` (loading a trained SwiftNet for semantic segmentation (frozen weights) and train an additional reconstruction decoder).
 Please refer to `swiftnet.sh` and `swiftnet_rec.sh` for example usages.
